@@ -19,7 +19,13 @@ namespace Testo
 
         public void Run()
         {
+            testabranch();
+        }
 
+        public void testabranch()
+        {
+            Console.WriteLine("tengil");
+            Console.ReadLine();
         }
     }
 }

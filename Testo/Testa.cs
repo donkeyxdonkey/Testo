@@ -24,10 +24,8 @@ namespace Testo
 
         public void testabranch(int StartIndex)
         {
-            //BYGGA EN MATRIX @KEANU-BOI
-
-            Console.WriteLine("Ange Matris storlek:>");
-            var MatrixXY = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Ange Matris storlek (MAX 15):>");
+            var MatrixXY = Convert.ToInt32(Console.ReadLine()); //lägg till funktion som kontrollerar om input är int
 
             var TheMatrix = new int?[MatrixXY, MatrixXY];
             var FacingDirection = Direction.Right;
@@ -38,13 +36,11 @@ namespace Testo
             for (int i = 0; i < MatrixXY*MatrixXY; i++)
             {
                 TheMatrix[X, Y] = StartIndex;
-                Console.Write(TheMatrix[X, Y]);
-                Console.ReadLine();
 
                 switch (FacingDirection)
                 {
                     case Direction.Right:
-                        if (X == MatrixXY -1)
+                        if (X == MatrixXY -1 || TheMatrix[X+1, Y] != null)
                         {
                             FacingDirection = Direction.Down;
                             Y++;
@@ -52,14 +48,14 @@ namespace Testo
 
                         break;
                     case Direction.Down:
-                        if (Y == MatrixXY - 1)
+                        if (Y == MatrixXY - 1 || TheMatrix[X, Y+1] != null)
                         {
                             FacingDirection = Direction.Left;
                             X--;
                         } else Y++;
                         break;
                     case Direction.Left:
-                        if (X == 0)
+                        if (X == 0 || TheMatrix[X-1, Y] != null)
                         {
                             FacingDirection = Direction.Up;
                             Y--;
@@ -67,7 +63,7 @@ namespace Testo
                         else X--;
                         break;
                     case Direction.Up:
-                        if (TheMatrix[X, Y] == null)
+                        if (TheMatrix[X, Y-1] != null)
                         {
                             FacingDirection = Direction.Right;
                             X++;
@@ -81,15 +77,21 @@ namespace Testo
 
             }
 
+            var StrBuilder = new StringBuilder();
+
             for (int i = 0; i < MatrixXY; i++)
             {
                 for (int j = 0; j < MatrixXY; j++)
                 {
-                    Console.WriteLine(TheMatrix[j,i]);
+                    if (j == 0 && i > 0) StrBuilder.Append("\n");
+
+                    if (TheMatrix[j, i] < 10) StrBuilder.Append($"[{TheMatrix[j,i]}  ]");
+                    else if (TheMatrix[j, i] < 100) StrBuilder.Append($"[{TheMatrix[j, i]} ]");
+                    else StrBuilder.Append($"[{TheMatrix[j, i]}]");
                 }
             }
 
-
+            Console.WriteLine(StrBuilder.ToString());
             Console.ReadLine();
 
         }

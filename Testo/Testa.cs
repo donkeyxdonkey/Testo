@@ -19,13 +19,18 @@ namespace Testo
 
         public void Run()
         {
-            testabranch();
+            testabranch(1);
         }
 
-        public void testabranch()
+        public void testabranch(int StartIndex)
         {
-            Console.WriteLine("tengil");
-            Console.ReadLine();
+            //BYGGA EN MATRIX @KEANU
+
+            Console.WriteLine("Ange Matris storlek:>");
+            var MatrixXY = Convert.ToInt32(Console.ReadLine());
+
+            var TheMatrix = new int[MatrixXY, MatrixXY];
+
         }
     }
 }

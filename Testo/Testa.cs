@@ -1,31 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
 
 namespace Testo
 {
     class Testa
     {
-
         enum Direction
         {
-            Right,
-            Down,
-            Left,
-            Up
+            Right,Down,Left,Up
         }
 
         public void Run()
         {
-            testabranch(1);
+            Console.WriteLine("   -----------------------------");
+            Console.WriteLine("   |                           |");
+            Console.WriteLine("   |         THE MATRIX        |");
+            Console.WriteLine("   |                           |");
+            Console.WriteLine("   -----------------------------\n");
+            Console.Write("ANGE START INDEX:>");
+            var StartIndex = ReturnInteger(Console.CursorLeft);
+            SpiralMatrix(StartIndex);
         }
 
-        public void testabranch(int StartIndex)
+        public void SpiralMatrix(int StartIndex)
         {
-            Console.WriteLine("Ange Matris storlek (MAX 15):>");
-            var MatrixXY = Convert.ToInt32(Console.ReadLine()); //lägg till funktion som kontrollerar om input är int
+            Console.Write("Ange Matris storlek (MAX 15):>");
+            var MatrixXY = ReturnInteger(Console.CursorLeft);
 
             var TheMatrix = new int?[MatrixXY, MatrixXY];
             var FacingDirection = Direction.Right;
@@ -69,12 +70,9 @@ namespace Testo
                             X++;
                         }
                         else Y--;
-
                         break;
                 }
-                
                 StartIndex++;
-
             }
 
             var StrBuilder = new StringBuilder();
@@ -95,5 +93,40 @@ namespace Testo
             Console.ReadLine();
 
         }
+
+        int ReturnInteger(int ConsolePos)
+        {
+            var Check = false;
+            var str = "";
+
+            while (Check == false)
+            {
+                str = Console.ReadLine();
+                Check = IsDigitsOnly(str);
+                if (Check == false)
+                {
+                    Console.SetCursorPosition(ConsolePos, Console.CursorTop-1);
+                    for (int i = 0; i < str.Length; i++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.SetCursorPosition(ConsolePos, Console.CursorTop);
+                }
+            }
+
+            return Convert.ToInt32(str);
+        }
+
+        bool IsDigitsOnly(string str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
+
     }
 }

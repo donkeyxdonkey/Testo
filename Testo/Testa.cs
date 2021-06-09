@@ -13,7 +13,7 @@ namespace Testo
 
         public void Run()
         {
-            Console.WriteLine("   -----------------------------");
+            Console.WriteLine("\n   -----------------------------");
             Console.WriteLine("   |                           |");
             Console.WriteLine("   |         THE MATRIX        |");
             Console.WriteLine("   |                           |");
@@ -26,7 +26,7 @@ namespace Testo
         public void SpiralMatrix(int StartIndex)
         {
             Console.Write("Ange Matris storlek (MAX 15):>");
-            var MatrixXY = ReturnInteger(Console.CursorLeft);        
+            var MatrixXY = ReturnInteger(Console.CursorLeft);
 
             var TheMatrix = new int?[MatrixXY, MatrixXY];
             var FacingDirection = Direction.Right;
@@ -83,7 +83,7 @@ namespace Testo
                 {
                     if (j == 0 && i > 0) StrBuilder.Append("\n");
 
-                    if (TheMatrix[j, i] < 10) StrBuilder.Append($"[{TheMatrix[j,i]}  ]");
+                    if (TheMatrix[j, i] < 10) StrBuilder.Append($"[ {TheMatrix[j,i]} ]");
                     else if (TheMatrix[j, i] < 100) StrBuilder.Append($"[{TheMatrix[j, i]} ]");
                     else StrBuilder.Append($"[{TheMatrix[j, i]}]");
                 }

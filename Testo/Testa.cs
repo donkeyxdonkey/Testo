@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Numerics;
 using System.Linq;
 
 namespace Testo
@@ -13,6 +14,7 @@ namespace Testo
 
         public void Run()
         {
+            //spiralmatris
             Console.WriteLine("\n   -----------------------------");
             Console.WriteLine("   |                           |");
             Console.WriteLine("   |         THE MATRIX        |");
@@ -21,6 +23,14 @@ namespace Testo
             Console.Write("ANGE START INDEX:>");
             var StartIndex = ReturnInteger(Console.CursorLeft);
             SpiralMatrix(StartIndex);
+            Console.ReadLine();
+            Console.Clear();
+
+            //fibonacci
+            Console.Write("\n FIBONACCI ITTERATIONS:>");
+            var Itterations = ReturnInteger(Console.CursorLeft);
+            Fibonacci(Itterations);
+            Console.ReadLine();
         }
 
         public void SpiralMatrix(int StartIndex)
@@ -89,10 +99,26 @@ namespace Testo
                 }
             }
 
-            Console.WriteLine($"\n{StrBuilder.ToString()}");
-            Console.ReadLine();
+            Console.WriteLine($"\n{StrBuilder.ToString()}");            
         }
 
+        public void Fibonacci(int Itterations)
+        {            
+            var StrBuilder = new StringBuilder();
+            BigInteger P = 0, N = 1, PlaceHolder = P;            
+
+            for (int i = 0; i < Itterations; i++)
+            {
+                if (i == 0) StrBuilder.Append($"{P}\n{N}\n");
+                else StrBuilder.Append($"{N}\n");
+
+                PlaceHolder = P + N;
+                P = N;
+                N = PlaceHolder;
+            }
+            Console.WriteLine(StrBuilder.ToString());
+        }
+         
         //snapshottar consoleposition och skriver över tills korrekt input
         int ReturnInteger(int ConsolePos)
         {

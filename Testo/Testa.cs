@@ -26,7 +26,7 @@ namespace Testo
         public void SpiralMatrix(int StartIndex)
         {
             Console.Write("Ange Matris storlek (MAX 15):>");
-            var MatrixXY = ReturnInteger(Console.CursorLeft);
+            var MatrixXY = ReturnInteger(Console.CursorLeft);        
 
             var TheMatrix = new int?[MatrixXY, MatrixXY];
             var FacingDirection = Direction.Right;
@@ -89,11 +89,11 @@ namespace Testo
                 }
             }
 
-            Console.WriteLine(StrBuilder.ToString());
+            Console.WriteLine($"\n{StrBuilder.ToString()}");
             Console.ReadLine();
-
         }
 
+        //snapshottar consoleposition och skriver över tills korrekt input
         int ReturnInteger(int ConsolePos)
         {
             var Check = false;
@@ -113,10 +113,11 @@ namespace Testo
                     Console.SetCursorPosition(ConsolePos, Console.CursorTop);
                 }
             }
-
             return Convert.ToInt32(str);
         }
 
+
+        //från stackoverflow nedan
         bool IsDigitsOnly(string str)
         {
             foreach (char c in str)

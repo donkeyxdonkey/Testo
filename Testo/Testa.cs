@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Numerics;
-using System.Linq;
+using System.Windows.Forms;
 
 namespace Testo
 {
@@ -31,6 +31,10 @@ namespace Testo
             var Itterations = ReturnInteger(Console.CursorLeft);
             Fibonacci(Itterations);
             Console.ReadLine();
+            Console.Clear();
+
+            kaptenmorgan();
+
         }
 
         public void SpiralMatrix(int StartIndex)
@@ -118,7 +122,19 @@ namespace Testo
             }
             Console.WriteLine(StrBuilder.ToString());
         }
-         
+
+
+        public void kaptenmorgan()
+        {
+            Console.WriteLine("KAPTEN MORGAN PÅSTÅR ATT");
+            Console.WriteLine("A ÄR B ÄR DETSAMMA SOM INTE A ÄR INTE B");
+            Console.WriteLine("SANT ELLER FALSKT?");
+            Console.ReadLine();
+            Application.EnableVisualStyles();
+            Application.Run(new testi());
+            Console.ReadLine();
+        }
+
         //snapshottar consoleposition och skriver över tills korrekt input
         int ReturnInteger(int ConsolePos)
         {
